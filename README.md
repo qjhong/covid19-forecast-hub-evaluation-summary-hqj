@@ -20,6 +20,7 @@ RMSE_3w: root-mean-square error of weekly 3-week forward projections
 MAE_5w: mean absolute error of weekly 5-week forward projections
 
 mean_RMSE_1234w: mean(RMSE_1w, RMSE_2w, RMSE_3w, RMSE_4w)
+
 **Sorted by median of weekly ranking**
 ![Sorted by median of weekly ranking](https://github.com/qjhong/covid19-forecast-hub-evaluation-summary-hqj/blob/main/Rank_Summary.png)
 **Sorted by mean of 1234w RMSE**
