@@ -12,7 +12,6 @@ Each model has the option to exclude the three earliest submissions, as it takes
 1. Step 2 gives **direct** and **primary** data of historical weekly ranking and error. In contrast, YYG's summary gives **indirect** data - it involves an additional layer of "beating the baseline". This does not reflect the true performance of a model. For exmaple, we compare a good model (error 5%) and a poor model (error 50%). When baseline error is 70%, each model scores 1 point. When baseline error is 1%, each model scores 0 point. Under these circumstances, YYG's approach cannot distinguish the models.
 2. Models are ranked based on their 1-4 week forward projection. Many models do not provide forecast beyond 4 weeks, so YYG's evaluation is unfair to these models. 
 
-**Sorted by median of weekly ranking**
 
 Rank_median: median of weekly rankings
 
@@ -21,7 +20,7 @@ RMSE_3w: root-mean-square error of weekly 3-week forward projections
 MAE_5w: mean absolute error of weekly 5-week forward projections
 
 mean_RMSE_1234w: mean(RMSE_1w, RMSE_2w, RMSE_3w, RMSE_4w)
-
+**Sorted by median of weekly ranking**
 ![Sorted by median of weekly ranking](https://github.com/qjhong/covid19-forecast-hub-evaluation-summary-hqj/blob/main/Rank_Summary.png)
 **Sorted by mean of 1234w RMSE**
 ![Sorted by mean of 1234w RMSE](https://github.com/qjhong/covid19-forecast-hub-evaluation-summary-hqj/blob/main/Rank_RMSE_Summary.png)
