@@ -1,6 +1,6 @@
 # covid19-forecast-hub-evaluation-summary-hqj
 
-Here I present an improved version of [YouYang Gu's evaluation](https://raw.githubusercontent.com/youyanggu/covid19-forecast-hub-evaluation) of models from the [COVID-19 Forecast Hub](https://github.com/reichlab/covid19-forecast-hub).
+Here I present an improved version of [YouYang Gu's evaluation](https://github.com/youyanggu/covid19-forecast-hub-evaluation) of models from the [COVID-19 Forecast Hub](https://github.com/reichlab/covid19-forecast-hub).
 
 The evaluation consists of two steps.
 1. **Evaluation** level - Every week, the percentage error of a model is calculated. Models are ranked based on 1-6w performance. (This step is exactly the same and copied from YYG's evaluation)
