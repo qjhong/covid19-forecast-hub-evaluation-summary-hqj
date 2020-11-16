@@ -77,6 +77,12 @@ def get_rank(model_name):
         except:
             pass
     #print(model_name,rank_collect,rmse_6w)
+    while len(rmse_6w) < 6:
+        rmse_6w.append(-1)
+    while len(mae_6w) < 6:
+        mae_6w.append(-1)
+    rmse_6w.append(numpy.mean(rmse_6w[0:4]))
+    mae_6w.append(numpy.mean(mae_6w[0:4]))
     return rank_collect,rmse_6w,mae_6w
 
 def plot_rank(model_name):
@@ -84,11 +90,9 @@ def plot_rank(model_name):
     df = pd.DataFrame(rank_collect)
     if df.shape[0] >= 3:
         plt.plot(df.iloc[3:,0],df.iloc[3:,1],'.-')
-        while len(rmse_6w) < 6:
-            rmse_6w.append(-1)
-        while len(mae_6w) < 6:
-            mae_6w.append(-1)
-        print(",%5.2f, %5.2f, %5.2f, %5.2f /%5.2f, %5.2f /%5.2f, %5.2f /%5.2f, %5.2f /%5.2f, %5.2f /%5.2f, %5.2f /%5.2f, %s" % (numpy.median(df.iloc[3:,1].values),numpy.mean(df.iloc[3:,1].values),numpy.std(df.iloc[3:,1].values),rmse_6w[0],mae_6w[0],rmse_6w[1],mae_6w[1],rmse_6w[2],mae_6w[2],rmse_6w[3],mae_6w[3],rmse_6w[4],mae_6w[4],rmse_6w[5],mae_6w[5],model_name) )
+        rmse_6w = numpy.asarray(rmse_6w) * 100.
+        mae_6w = numpy.asarray(mae_6w) * 100.
+        print("%s,%5.1f /%5.1f +-%5.1f, %5.1f%% /%5.1f%%, %5.1f%% /%5.1f%% /%5.1f%% /%5.1f%% /%5.1f%% /%5.1f%%, %5.1f%% /%5.1f%% /%5.1f%% /%5.1f%% /%5.1f%% /%5.1f%%" % (model_name,numpy.median(df.iloc[3:,1].values),numpy.mean(df.iloc[3:,1].values),numpy.std(df.iloc[3:,1].values),rmse_6w[-1],mae_6w[-1],rmse_6w[0],rmse_6w[1],rmse_6w[2],rmse_6w[3],rmse_6w[4],rmse_6w[5],mae_6w[0],mae_6w[1],mae_6w[2],mae_6w[3],mae_6w[4],mae_6w[5]) )
         #plt.plot(df.iloc[0:,0],df.iloc[0:,1],'.-')
         for i in range(3,df.shape[0]):
             plt.text(df.iloc[i,0]-timedelta(days=1),df.iloc[i,1]-.3,str(df.iloc[i,1]),fontsize=7)
@@ -101,8 +105,10 @@ for line in lines:
 F.close()
 sys.stdout.close()
 
-os.system("echo 'Ranking, Median, Mean, std, rmse/mae_1w, rmse/mae_2w, rmse/mae_3w, rmse/mae_4w, rmse/mae_5w, rmse/mae_6w, Model name' > rank.csv")
-os.system("cat rank_results | sort -n >> rank.csv")
+os.system("echo 'Model, Rank_Median/Mean/STD, mean_RMSE/MAE_1234w, RMSE_1w/2w/3w/4w/5w/6w, MAE_1w/2w/3w/4w/5w/6w' > rank.csv")
+os.system("cat rank_results | sort -n -k2 >> rank.csv")
+os.system("echo 'Model, Rank_Median/Mean/STD, mean_RMSE/MAE_1234w, RMSE_1w/2w/3w/4w/5w/6w, MAE_1w/2w/3w/4w/5w/6w' > rank_RMSE_4w.csv")
+os.system("cat rank_results | sort -n -k7 >> rank_rmse_4w.csv")
 
 plt.close()
 sys.stdout = open('rank_results', 'w')
