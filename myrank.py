@@ -127,7 +127,7 @@ plt.gca().invert_yaxis()
 plt.xlabel('Date')
 plt.ylabel('Ranking')
 plt.legend(['QJHong-Encounter','YYG-ParamSearch','IHME-CurveFit','UCLA-SuEIR','USC-SI_kJalpha','UMass-MechBayes'])#,'OliverWyman-Navigator'])#,'COVIDhub-ensemble','LANL-GrowthRate'])
-plt.xticks([datetime(2020,6,1),datetime(2020,7,1),datetime(2020,8,1),datetime(2020,9,1),datetime(2020,10,1),datetime(2020,11,1)],['2020/6/1','2020/7/1','2020/8/1','2020/9/1','2020/10/1','2020/11/1'])
+plt.xticks([datetime(2020,6,1),datetime(2020,7,1),datetime(2020,8,1),datetime(2020,9,1),datetime(2020,10,1),datetime(2020,11,1),datetime(2020,12,1)],['2020/6/1','2020/7/1','2020/8/1','2020/9/1','2020/10/1','2020/11/1','2020/12/1'])
 plt.savefig('Model_Rank',dpi=150)
 plt.show()
 
